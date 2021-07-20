@@ -20,7 +20,7 @@ public class EmailSender {
 	void emailRecipiens() throws IOException, AddressException, MessagingException{
 		EmailSender mail1 = new  EmailSender();
 		
-//		Map<String ,String> hm = new HashMap();
+//		Map<String ,String> hm = new HashMap();				 //Through the collection we can add
 //		hm.put("zaidmje@gmail.com", "https://github.com/MohammedZaidJ/HIT-lab");
 //		hm.put("thaqicm@gmail.com", "https://github.com/Thaqi2021/HIT-Lab");
 		
