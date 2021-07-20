@@ -1,29 +1,21 @@
 package SampleGen;
 
 import java.io.FileOutputStream;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Scanner;
 
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfAction;
 import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfDestination;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.TextField;
-import java.text.DateFormat;
 
 
 public class CreatePDF {
@@ -49,10 +41,9 @@ public class CreatePDF {
 			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(pdfName));
 			Image image = Image.getInstance(imgpath);
 			
-			for (int i = 1; i <= pdfReader.getNumberOfPages(); i++) {
-				if (i == 1) {
+				if (pdfReader.getNumberOfPages() >0) {
 
-					PdfContentByte content = pdfStamper.getUnderContent(i);
+					PdfContentByte content = pdfStamper.getUnderContent(1);
 					image.setAbsolutePosition(0, 0);
 					image.scaleToFit(PageSize.A3.getWidth(), PageSize.A3.getHeight());
 					content.addImage(image);
@@ -86,7 +77,6 @@ public class CreatePDF {
 					setData(pdfStamper, seal, BaseFont.TIMES_BOLDITALIC, 16, BaseColor.WHITE, 380, 220, 950, 100);
 
 
-				}
 
 			}
 
