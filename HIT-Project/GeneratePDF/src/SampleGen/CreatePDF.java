@@ -25,7 +25,7 @@ public class CreatePDF {
 //		System.out.println("Enter the Name :");
 //		Scanner sc = new Scanner(System.in);
 //		String CertName= sc.nextLine();
-		String CertName ="Cert-Name";
+		String CertName ="Certification-Name";
 		String path ="E:\\HIT\\GeneratePDF\\Data\\"+CertName+".pdf";
 		try {
 			addContentToCertificate(path);
@@ -41,8 +41,6 @@ public class CreatePDF {
 			PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(pdfName));
 			Image image = Image.getInstance(imgpath);
 			
-				if (pdfReader.getNumberOfPages() >0) {
-
 					PdfContentByte content = pdfStamper.getUnderContent(1);
 					image.setAbsolutePosition(0, 0);
 					image.scaleToFit(PageSize.A3.getWidth(), PageSize.A3.getHeight());
@@ -78,7 +76,6 @@ public class CreatePDF {
 
 
 
-			}
 
 			pdfStamper.close();
 			pdfReader.close();
