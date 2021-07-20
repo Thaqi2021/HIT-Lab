@@ -10,18 +10,11 @@ import java.util.Date;
 import javax.net.ssl.HttpsURLConnection;
 
 public class SendSms {
-		public static void main(String[] args) {
-		System.out.println("Program started.....");
 
-		SendSms.sendSms("this message using java code ..."+new Date().toLocaleString(), "7845014181");
-		
-		}
-
-		// TODO Auto-generated method stub
 		public static void sendSms(String message,String number){
 			try{
 			
-			String apiKey="GMjNhRgyUiuLJ8d2KIOxYZST4s0pD6r9QtwPqbBolAvcnkm71fnTQhJtsYqF1E7kgylpWC63Uzdc52Rv";
+			String apiKey="<API Key>";
 			String sendId="FSTSMS";
 			//important step...
 			message=URLEncoder.encode(message, "UTF-8");
@@ -48,16 +41,16 @@ public class SendSms {
 			
 			StringBuffer response=new StringBuffer();
 			
-			BufferedReader br=new BufferedReader(new InputStreamReader(con.getInputStream()));
+// 			BufferedReader br=new BufferedReader(new InputStreamReader(con.getInputStream()));//Review the Reponse of HttpsURLConnection //optional
 			
-			while(true){
-				String line=br.readLine();
-				if(line==null){
-					break;
-				}
-				response.append(line);
-			}
-			System.out.println(response);
+// 			while(true){
+// 				String line=br.readLine();
+// 				if(line==null){
+// 					break;
+// 				}
+// 				response.append(line);
+// 			}
+// 			System.out.println(response);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
