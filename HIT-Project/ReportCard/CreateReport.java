@@ -43,9 +43,7 @@ public class CreateReport {
 
 			for(int r=0;r<datalen;r++) {
 				for(int j =0;j<data[r].length;j++) {
-					if(r==0) {
-
-					}else {
+					if(r!=0){
 //						System.out.print(er.Data[r][j]+"\t "+r+","+j+" ");
 
 						if(j==0) {
@@ -179,7 +177,7 @@ public class CreateReport {
 //						catch(Exception e) {
 //							e.printStackTrace();
 //						}
-//						Option way------------------------------
+//						Optional way------------------------------
 						
 						System.out.println(SName[r]+"Excel is created..........");
 						if(Emailid[r].contains(PName[r])) {
