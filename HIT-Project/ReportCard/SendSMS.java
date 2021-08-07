@@ -8,6 +8,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class SendSMS {
 		void sendSms(String mess,long num) {
 			try{
+			
+
 			String apiKey="<<API Key>>";
 			String sendId="FSTSMS";
 			//important step...
@@ -17,6 +19,8 @@ public class SendSMS {
 			String language="english";
 			String number=num+"";
 			String route="p";
+			if(number.matches("\\d{10}")) { //validating Mobile Number
+
 			String myUrl="https://www.fast2sms.com/dev/bulk?authorization="+apiKey+"&sender_id="+sendId+"&message="+message+"&language="+language+"&route="+route+"&numbers="+number;
 			
 			//sending get request using java..
@@ -30,7 +34,7 @@ public class SendSMS {
 			int code=con.getResponseCode();
 			
 			System.out.println("Response code : "+code);
-			}
+			}else{System.out.println("Invalid Number :"+number);}}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
