@@ -1,12 +1,19 @@
 package ReportCard;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackageAccess;
+import org.apache.poi.poifs.crypt.EncryptionInfo;
+import org.apache.poi.poifs.crypt.EncryptionMode;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,7 +24,7 @@ public class CreateReport {
 		ExcelReport er = new ExcelReport();
 		SendReport sr = new SendReport();
 		GenCertificate gcs = new GenCertificate();
-//		SendSMS sms = new SendSMS();
+		SendSMS sms = new SendSMS();
 		String message="";
 		try {
 			er.ReadExcel();
@@ -116,7 +123,7 @@ public class CreateReport {
 							}
 							}else {result.setCellValue("Result");
 							message+=value+" "+"\n";
-}
+							}
 						}
 					
 					else if(value instanceof Boolean) {
@@ -125,7 +132,7 @@ public class CreateReport {
 						continue;
 					}
 					
-				}
+                   }
 				}
 				
 				
@@ -141,18 +148,45 @@ public class CreateReport {
 						}
 						else {
 							Cpath=filepath;
-						}
+						}				
+												
 						System.out.println(filepath);
 						FileOutputStream fos = new FileOutputStream(filepath);
 						work.write(fos);
 						fos.close();
+//						-----------------Set password in  Excel file--------------------
+//						try(POIFSFileSystem fs = new POIFSFileSystem() ){
+//							
+//							int min = 100000;  
+//							int max = 1000000;  
+//							int otp = (int) (Math.random()*(max-min+1)+min);  
+//							String ootp = otp+"";
+//							System.out.println(SName[r]+" : "+ootp);
+//							message="";
+//							message ="\nTo Open Your Result in Email Use this Password :"+ootp;
+//							EncryptionInfo info = new EncryptionInfo(EncryptionMode.agile);
+//							org.apache.poi.poifs.crypt.Encryptor enc =info.getEncryptor();		
+//							enc.confirmPassword(ootp);
+//							try(OPCPackage opc =OPCPackage.open(new File(filepath),PackageAccess.READ_WRITE );
+//									OutputStream os = enc.getDataStream(fs)){
+//									opc.save(os);
+//							}
+//							try (
+//								FileOutputStream fosi = new FileOutputStream(filepath) ){
+//									fs.writeFilesystem(fosi);
+//								}
+//							}
+//						catch(Exception e) {
+//							e.printStackTrace();
+//						}
+//						Option way------------------------------
 						
 						System.out.println(SName[r]+"Excel is created..........");
 						if(Emailid[r].contains(PName[r])) {
 						sr.setupServerProperties();
 						sr.draftEmail(PName[r], Emailid[r], filepath,SName[r],Cpath);
 						sr.sendEmail();}
-//						sms.sendSms(message,((long)Number[r]));  //Optional way of sending Result in SMS 
+						sms.sendSms(message,((long)Number[r]));  //Optional way of sending Result in SMS 
 						message = "";
 
 						}
