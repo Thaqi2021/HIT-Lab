@@ -177,14 +177,14 @@ public class CreateReport {
 //						catch(Exception e) {
 //							e.printStackTrace();
 //						}
-//						Optional way------------------------------
+//						Option way------------------------------
 						
 						System.out.println(SName[r]+"Excel is created..........");
-						if(Emailid[r].contains(PName[r])) {
+						if(Emailid[r].contains(PName[r])&&Emailid[r].contains("@")) {//validating EmailId 
 						sr.setupServerProperties();
 						sr.draftEmail(PName[r], Emailid[r], filepath,SName[r],Cpath);
-						sr.sendEmail();}
-						sms.sendSms(message,((long)Number[r]));  //Optional way of sending Result in SMS 
+						sr.sendEmail();}else {System.out.println("Invalid EMail ID :"+Emailid[r]);}
+//						sms.sendSms(message,((long)Number[r]));  //Optional way of sending Result in SMS 
 						message = "";
 
 						}
