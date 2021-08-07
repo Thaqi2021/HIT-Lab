@@ -8,7 +8,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class SendSMS {
 		void sendSms(String mess,long num) {
 			try{
-			String apiKey="GMjNhRgyUiuLJ8d2KIOxYZST4s0pD6r9QtwPqbBolAvcnkm71fnTQhJtsYqF1E7kgylpWC63Uzdc52Rv";
+			String apiKey="<<API Key>>";
 			String sendId="FSTSMS";
 			//important step...
 			String message ="Haaris Infotech Pvt Ltd .\nResult has been Published.\n"+mess;
