@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript"
+src="jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+//$("p").text("Hello World");
+$("p").each(function (index) {
+	$(this).text("Your ID is: " + this.id + " and index: " + index);
+	});
+
+$(".highlighted").css("background", "yellow");
+
+});
+
+
+</script>
+
+</head>
+<body>
+<p id ="p1"></p>
+<p id ="p2" class="highlighted"></p>
+
+<h1>it works</h1>
+</body>
+</html>
