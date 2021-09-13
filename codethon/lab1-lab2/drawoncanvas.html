@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Draw Something</title>
+<script type="text/javascript">
+function drawoncanvas(){
+	var c =document.getElementById("c");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle= "#00FF00";
+	ctx.fillRect(50,50,200,150);
+	ctx.moveTo(50,50);
+	ctx.lineTo(250,200);
+	ctx.moveTo(250,50);
+	ctx.lineTo(50,200);
+	ctx.strokeStyle= "#FF0000";
+	ctx.stroke();
+	
+}
+</script>
+</head>
+<body onload="drawoncanvas()">
+<canvas id = "c" width = "400" height = "300" style=" border:1px solid #c3c3c3" >
+        </canvas>
+</body>
+</html>
