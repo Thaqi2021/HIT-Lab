@@ -1,0 +1,17 @@
+/*-- CSS3: VQS Code 03.03 --*/
+
+
+body { 
+	padding: 220px 0 0 180px; }
+h1 { 	
+	color: green;	
+	font-size: 3em;
+	font-weight: bold; }
+h1 .chaptertitle { 
+	color: blue;
+	font-size: .5em;
+	font-weight: normal; }
+p {
+	color: violet;
+	font-size: 1.5em;
+	line-height: 2; }

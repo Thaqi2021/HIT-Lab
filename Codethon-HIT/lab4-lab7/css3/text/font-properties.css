@@ -1,0 +1,14 @@
+/*** font-properties.css ***/
+
+         
+body {	 
+	font-family:'BodyCopy',Constantia, Georgia ,"Times New Roman",serif;
+
+}
+h1, h2, .author {   
+	font-family:'TitleCopy', Corbel, Helvetiva,Arial, sans-serif;
+}
+h2.chaptertitle {	 
+	font-family:'TitleCopy',' Corbel, Helvetica, Arial, sans-serif;
+	} 
+
