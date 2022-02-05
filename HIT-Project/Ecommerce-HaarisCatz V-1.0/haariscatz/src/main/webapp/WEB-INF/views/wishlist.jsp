@@ -50,7 +50,7 @@
 				console.log(response);
 				if(response.status=="created"){
 					let options = {
-						    "key": "rzp_test_T5KTnhikoHhbos",
+						    "key": "<<Razor ID>>",
 						    "amount": response.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
 						    "currency": "INR",
 						    "name": "HaarisCart Pvt ltd.",
