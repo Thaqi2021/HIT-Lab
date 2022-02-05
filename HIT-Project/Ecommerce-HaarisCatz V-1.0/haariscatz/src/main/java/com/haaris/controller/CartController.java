@@ -139,7 +139,6 @@ public class CartController {
 						return null;
 					}
 					else {
-//					System.out.println(wishList.size()+"....."+inv);
 					String payment_id=data.get("payment_id").toString();
 					coimpl.addOrder(qty,Netamout , (int)user_id,wishList,userimpl,payment_id,inv);
 					wishimpl.updatecflag((int)user_id, 1,"HRC"+inv,0);
@@ -158,8 +157,7 @@ public class CartController {
 	 
 		@RequestMapping(value= {"/thanks"},method = RequestMethod.GET)
 		public String thanks(ModelMap model) {
-//				
-			return "thanks";
+		return "thanks";
 		}
 		
 
@@ -172,7 +170,7 @@ public class CartController {
 //			System.out.println(inv);
 			 List<WishList> wishList=wishimpl.getWishList((int)user_id,0);
 			 	if(wishList!=null) {
-				var client= new RazorpayClient("rzp_test_T5KTnhikoHhbos","gJj5MqCCOZsXvWJiwniRKeNp");
+				var client= new RazorpayClient("<<Razorpay Id>>","<<Secret Key>>");
 				JSONObject options = new JSONObject();
 				options.put("amount", amount*100);
 				options.put("currency", "INR");
@@ -191,7 +189,6 @@ public class CartController {
 		@RequestMapping(value= {"/delete-{product_id}-{userId}-list"},method = RequestMethod.GET)
 		public String deleteProductCart(ModelMap model,@PathVariable("product_id") int product_id,@PathVariable("userId") int userid) {
 			 if(userid!=0) {
-//				 System.out.println(product_id+"   ..>"+userid);
 				 wishimpl.deleteItem(userid, product_id);
 				 return "redirect:/wishlist-"+userid;
 			 }
