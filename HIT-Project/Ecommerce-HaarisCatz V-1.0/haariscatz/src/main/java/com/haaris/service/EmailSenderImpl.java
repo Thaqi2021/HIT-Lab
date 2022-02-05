@@ -32,7 +32,7 @@ public class EmailSenderImpl implements EmailSender{
 	
 	@Override
 	public void welcomeUser(String email ) {
-		message=" <br>Welcome to HaarisCatz Pvt ltd .<br> Enjoy Shopping from Home.<br><br>We Integrate only Quality Product"
+		message=" <br><br>Welcome to HaarisCatz Pvt ltd .<br> Enjoy Shopping from Home.<br><br>We Integrate only Quality Product"
 				+ "<br>We Trust in Customer Satisfaction  <br> Enjoy Quality World";
 		String logo ="E:\\HIT-Spring\\haariscatz\\src\\main\\resources\\invoice_logo.png";
 		 try {
@@ -81,8 +81,8 @@ public class EmailSenderImpl implements EmailSender{
 
 	private void sendEmail() throws MessagingException {
 		// TODO Auto-generated method stub
-		 String fromUser ="haariscart.dean@gmail.com";                //"thaqifullstack@gmail.com";
-		 String fromUserPassword = "pass***1";
+		 String fromUser ="haariscart.dean@gmail.com"; //"thaqifullstack@gmail.com";
+		 String fromUserPassword = "<<password>>";
 		 String emailHost="smtp.gmail.com";
 		 Transport transport = newSession.getTransport("smtp");
 		 transport.connect(emailHost,fromUser,fromUserPassword);
@@ -91,43 +91,40 @@ public class EmailSenderImpl implements EmailSender{
 		 System.out.println("\tEmail Sucessfully sent");
 	}
 	private MimeMessage draftEmail(String name,String mailId,String filepath) throws AddressException,MessagingException{
-    System.out.print("Sending Mail to "+name);
-	String Signature ="<b style=\"color:red;\">Thanks & Regards</b><br>Mr Mohammed Thaqi<br>"
-			+ "FullStack Development Trainee,<br>"
-			+ "Haaris Infotech Pvt. Ltd.,<br>"
-			+ "E-Mail:haariscart.dean@gmail.com,<br>"
-			+ "Customer Care: +917845014181.";
-	String emailBody="Dear Mr/Mrs "+name+ ""
-			+message
-			+".<br><br>WE THINK QUALITY .WE INTEGERATE QUALITY.WE THINK FOR CUSTOMERS <br><br>"+Signature;
-	
-	mimemessage = new MimeMessage(newSession);
+		System.out.print("Sending Mail to "+name);
+		String Signature ="<b style=\"color:red;\">Thanks & Regards</b><br>Mr Mohammed Thaqi<br>"
+				+ "FullStack Development Trainee,<br>"
+				+ "Haaris Infotech Pvt. Ltd.,<br>"
+				+ "E-Mail:haariscart.dean@gmail.com,<br>"
+				+ "Customer Care: +917845014181.";
+		String emailBody="Dear Mr/Mrs "+name+ ""
+				+message
+				+".<br><br>WE THINK QUALITY .WE INTEGERATE QUALITY.WE THINK FOR CUSTOMERS <br><br>"+Signature;
 
-	mimemessage.addRecipient(Message.RecipientType.TO,new InternetAddress(mailId));	
-	mimemessage.setSubject(emailSubject);
+		mimemessage = new MimeMessage(newSession);
 
-	MimeBodyPart filedd = new MimeBodyPart();//attachment to mail
-//	MimeBodyPart filedd2 = new MimeBodyPart();
-	try {
-		File file = new File(filepath);
-		filedd.attachFile(file);
-//		File file2 = new File(cpath);
-//		filedd2.attachFile(file2);
-	} catch (IOException e) {
-		e.printStackTrace();
-	} catch (MessagingException e) {
-		e.printStackTrace();
-	}
-	MimeBodyPart bodypart = new MimeBodyPart();
-	bodypart.setContent(emailBody,"text/html");
-	
-	MimeMultipart multipart = new MimeMultipart();
-	multipart.addBodyPart(bodypart); 
-	multipart.addBodyPart(filedd);
-//	multipart.addBodyPart(filedd2);
+		mimemessage.addRecipient(Message.RecipientType.TO,new InternetAddress(mailId));	
+		mimemessage.setSubject(emailSubject);
 
-	mimemessage .setContent(multipart);
-	return mimemessage;
+		MimeBodyPart filedd = new MimeBodyPart();//attachment to mail
+		try {
+			File file = new File(filepath);
+			filedd.attachFile(file);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		MimeBodyPart bodypart = new MimeBodyPart();
+		bodypart.setContent(emailBody,"text/html");
+
+		MimeMultipart multipart = new MimeMultipart();
+		multipart.addBodyPart(bodypart); 
+		multipart.addBodyPart(filedd);
+
+		mimemessage .setContent(multipart);
+		return mimemessage;
 
 	}
 	private void setupServerProperties() {
