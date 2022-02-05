@@ -1,0 +1,4 @@
+In EmailSenderImpl Add Sender Email Id and Password in sendEmail method .Ensure that sender gmail account - less secure app access should be on.
+Create Account in Razorpay then generate razorpay Id and Secret Key .
+In cartController add razorpay Id and Secret Key in createOrder method.
+Add razor Id in wishlist.jsp in line 53.
