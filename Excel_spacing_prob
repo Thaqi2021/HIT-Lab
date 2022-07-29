@@ -1,0 +1,27 @@
+public class Solution {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		String a[] = s.split(":");
+		int f=(int)a[0].charAt(0);
+		int sec=(int)a[1].charAt(0);
+		int ans = sec-f+1;
+		String cs="";
+		for(int i=1;i<a[0].length();i++) {
+			if(Character.isDigit(a[0].charAt(i))) {
+				cs+=a[0].charAt(i);
+			}
+		}
+		String cp="";
+		for(int i=1;i<a[1].length();i++) {
+			if(Character.isDigit(a[1].charAt(i))) {
+				cp+=a[1].charAt(i);
+			}
+		}
+		int f1 =Integer.parseInt(cs);
+		int s2 =Integer.parseInt(cp);
+		int ans2=s2-f1+1;
+		System.out.println(ans*ans2);
+		sc.close();
+	}
+}
